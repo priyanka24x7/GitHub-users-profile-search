@@ -1,0 +1,9 @@
+<div class="recent-wrapper">
+  <div class="recent-search">RECENT SEARCHES</div>
+  <ul>
+    <li *ngFor="let user of history; let i = index">
+      {{ user }}
+      <button (click)="deleteHistory(i)" class="delete-btn">X</button>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,75 @@
+<div class="header">
+  <img src="assets/github-logo.png" class="logo" />
+</div>
+
+<div class="container">
+  <form class="search-wrapper" (submit)="getUserProfile()">
+    <input type="text" [(ngModel)]="searchQuery" name="userProfile" size="50" class="searchbox"
+      placeholder="Search user profile..." />
+    <input type="submit" value="Search" class="search-btn">
+  </form>
+  <div class="search-result" *ngIf="searchResult">
+    <div class="wrapper">
+      <div class="profile-card js-profile-card">
+        <div class="profile-card__img">
+          <img [src]="searchResult?.avatar_url" alt="profile card">
+        </div>
+
+        <div class="profile-card__cnt js-profile-cnt">
+          <div class="profile-card__name">{{searchResult?.name}}</div>
+          <div class="profile-card__txt">{{searchResult?.bio}}</div>
+          <div class="profile-card-loc">
+            <span class="profile-card-loc__txt">
+              {{searchResult?.location}}
+            </span>
+          </div>
+
+          <div class="profile-card-inf">
+            <div class="profile-card-inf__item">
+              <div class="profile-card-inf__title">{{searchResult?.followers}}</div>
+              <div class="profile-card-inf__txt">Followers</div>
+            </div>
+
+            <div class="profile-card-inf__item">
+              <div class="profile-card-inf__title">{{searchResult?.following}}</div>
+              <div class="profile-card-inf__txt">Following</div>
+            </div>
+
+            <div class="profile-card-inf__item">
+              <div class="profile-card-inf__title">{{searchResult?.public_repos}}</div>
+              <div class="profile-card-inf__txt">Public Repos</div>
+            </div>
+          </div>
+
+          <div class="profile-card-ctr">
+            <button class="profile-card__button button--orange">Follow</button>
+          </div>
+        </div>
+
+      </div>
+      <div class="profile-details">
+        <div>
+          User Name : {{searchResult?.login}}
+        </div>
+        <div>
+          Localtion : {{searchResult?.location}}
+        </div>
+        <div>
+          Email : {{searchResult?.email}}
+        </div>
+        <div>
+          Company: {{searchResult?.company}}
+        </div>
+        <div>
+          Blog : {{searchResult?.blog}}
+        </div>
+        <div>
+          Created at: {{searchResult?.created_at | date}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="recent-search">
+    <app-profile-history  [history]="history"></app-profile-history>
+  </div>
+</div>
